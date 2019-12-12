@@ -36,7 +36,7 @@ path separators for your Operating System.
 Now it's ready to deploy, run the following command to install and start the server:
 
 ```shell script
-konduit init --os windows_x86-64
+konduit init --os windows-x86_64
 konduit serve --config konduit.yml
 ```
 
