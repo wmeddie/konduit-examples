@@ -9,6 +9,7 @@ dependencies.
 
 ```shell script
 python -m venv venv
+source venv/bin/active # venv\Scripts\activate.bat on Windows
 pip install cython
 # If you are on windows
 # pip3 install torch===1.3.1 torchvision===0.4.2 -f https://download.pytorch.org/whl/torch_stable.html
