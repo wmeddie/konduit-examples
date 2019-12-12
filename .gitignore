@@ -1,0 +1,9 @@
+data
+venv
+model.pt
+*~
+.idea
+.vscode
+*.pyc
+__pycache__
+

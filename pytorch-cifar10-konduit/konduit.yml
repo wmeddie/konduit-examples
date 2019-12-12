@@ -1,0 +1,43 @@
+serving:
+  http_port: 1337
+  input_data_format: IMAGE
+  output_data_format: NUMPY
+  log_timings: True
+steps:
+  image_loading_step:
+    type: IMAGE_LOADING
+    image_processing_initial_layout: NCHW
+    image_processing_required_layout: NCHW
+    input_column_names:
+      default:
+        - first
+    input_names:
+      - default
+    input_schemas:
+      default:
+        - NDArray
+    output_names:
+      - default
+    output_schemas:
+      default:
+        - NDArray
+    output_column_names:
+        default:
+          - first
+    dimensions_configs:
+      default:
+          - 32
+          - 32
+          - 3
+  python_step:
+    type: PYTHON
+    python_path: E:\\src\\skymind\\konduit-examples\\pytorch-cifar10-konduit;E:\\src\\skymind\\konduit-examples\\pytorch-cifar10-konduit\\venv\\lib\\site-packages
+    python_code_path: ./serve.py
+    python_inputs:
+      first: NDARRAY
+    python_outputs:
+      second: NDARRAY
+client:
+    port: 1337
+    prediction_type: NUMPY
+    output_data_format: NUMPY
