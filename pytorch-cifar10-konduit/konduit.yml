@@ -3,6 +3,7 @@ serving:
   input_data_format: IMAGE
   output_data_format: NUMPY
   log_timings: True
+  extra_start_args: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=127.0.0.1:5005"
 steps:
   image_loading_step:
     type: IMAGE_LOADING
@@ -34,6 +35,7 @@ steps:
     # We should do some python_path expansion automatically I think.
     python_path: .;.\\venv\\lib\\site-packages
     python_code_path: ./serve.py
+    setup_and_run: True
     python_inputs:
       first: NDARRAY
     python_outputs:

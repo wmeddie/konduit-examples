@@ -22,10 +22,6 @@ def run():
     global transform
     global model
     global first
-    global second
 
     input_data = transform(torch.from_numpy(first).squeeze(0)).unsqueeze(0)
-    second = model(input_data).detach().numpy()
-
-setup()
-run()
+    return {"second": model(input_data).detach().numpy()}

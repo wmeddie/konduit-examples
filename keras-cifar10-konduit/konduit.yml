@@ -1,0 +1,59 @@
+serving:
+  http_port: 1337
+  input_data_format: IMAGE
+  output_data_format: JSON
+  prediction_type: RAW
+  log_timings: True
+#  extra_start_args: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=127.0.0.1:5005"
+steps:
+  image_loading_step:
+    type: IMAGE_LOADING
+    image_processing_initial_layout: NCHW
+    image_processing_required_layout: NCHW
+    input_column_names:
+      default:
+        - first
+    input_names:
+      - default
+    input_schemas:
+      default:
+        - NDArray
+    output_names:
+      - default
+    output_schemas:
+      default:
+        - NDArray
+    output_column_names:
+      default:
+        - first
+    dimensions_configs:
+      default:
+        - 32
+        - 32
+        - 3
+  dl4j_mln_step:
+    type: KERAS
+    model_loading_path: keras-cifar10.h5
+    input_names:
+      - default
+    input_column_names:
+      default:
+        - first
+    input_schemas:
+      default:
+        - NDArray
+    output_names:
+      - output
+    output_schemas:
+      default:
+        - NDArray
+    output_column_names:
+      default:
+        - NDArray
+    parallel_inference_config:
+      workers: 1
+client:
+  port: 1337
+  input_data_format: IMAGE
+  prediction_type: RAW
+  output_data_format: RAW

@@ -18,14 +18,18 @@ def test_model():
 
     request = {"instances" : images[0:1].tolist()}
     responses = []
+    request_count = 100
 
     start = time.time()
-    for i in range(1000):
+    for i in range(request_count):
         responses.append(requests.post("http://localhost:8080/v1/models/cifar10:predict", json=request).json())
     print(len(responses))
     end = time.time()
 
-    print("%f seconds elapsed for 1000 requests (%d RPS)" % (end - start, (1000.0 / (end - start))))
+    print("%f seconds elapsed for %d requests (%d RPS)" % (
+        end - start, 
+        request_count, 
+        (float(request_count) / (end - start))))
 
 if __name__ == '__main__':
     test_model()
