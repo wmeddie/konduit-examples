@@ -2,7 +2,7 @@ serving:
   http_port: 1337
   input_data_format: IMAGE
   output_data_format: JSON
-  prediction_type: RAW
+  prediction_type: CLASSIFICATION
   log_timings: True
 #  extra_start_args: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=127.0.0.1:5005"
 steps:
@@ -55,5 +55,7 @@ steps:
 client:
   port: 1337
   input_data_format: IMAGE
-  prediction_type: RAW
-  output_data_format: RAW
+  prediction_type: CLASSIFICATION
+  output_data_format: JSON
+  output_names:
+    - output
