@@ -36,5 +36,5 @@ table-logger==0.3.6
 torch==1.3.1
 torchvision==0.4.2
 tornado==6.0.3
-urllib3==1.25.7
+urllib3==1.26.5
 websocket-client==0.56.0
